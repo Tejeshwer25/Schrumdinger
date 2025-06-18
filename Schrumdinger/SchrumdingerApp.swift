@@ -10,8 +10,10 @@ import SwiftUI
 @main
 struct SchrumdingerApp: App {
     var body: some Scene {
+        /// WindowGroup is one of the primitive scenes that SwiftUI provides.
+        /// In iOS, the views you add to the WindowGroup scene builder are presented in a window that fills the device’s entire screen
         WindowGroup {
-            ContentView()
+            ScrumsView(scrums: DailyScrum.sampleData)
         }
     }
 }

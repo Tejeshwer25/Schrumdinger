@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A40B2A642E02F0A80061A102 /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = A40B2A632E02F0A80061A102 /* ThemeKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A4D783402E02EBAD001F3EB2 /* Schrumdinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schrumdinger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40B2A642E02F0A80061A102 /* ThemeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = Schrumdinger;
 			packageProductDependencies = (
+				A40B2A632E02F0A80061A102 /* ThemeKit */,
 			);
 			productName = Schrumdinger;
 			productReference = A4D783402E02EBAD001F3EB2 /* Schrumdinger.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = A4D783372E02EBAD001F3EB2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A40B2A622E02F0A80061A102 /* XCLocalSwiftPackageReference "ThemeKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A4D783412E02EBAD001F3EB2 /* Products */;
 			projectDirPath = "";
@@ -320,6 +329,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A40B2A622E02F0A80061A102 /* XCLocalSwiftPackageReference "ThemeKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ThemeKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A40B2A632E02F0A80061A102 /* ThemeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ThemeKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4D783382E02EBAD001F3EB2 /* Project object */;
 }

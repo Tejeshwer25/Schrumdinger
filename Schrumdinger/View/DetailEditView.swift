@@ -18,6 +18,7 @@ struct DetailEditView: View {
     @State private var lengthInMinutesAsDouble: Double
     @State private var theme: Theme
     @State private var attendees: [Attendee]
+    @State private var errorWrapper: ErrorWrapper?
     
     let scrum: DailyScrum
     private let isCreatingScrum: Bool
@@ -96,14 +97,24 @@ struct DetailEditView: View {
             
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    saveEdits()
-                    dismiss()
+                    do {
+                        try saveEdits()
+                        dismiss()
+                    } catch {
+                        errorWrapper = ErrorWrapper(error: error, guidance: "Daily Scrum was not recorded. Please try again later!")
+                    }
                 }
             }
         }
+        .sheet(item: $errorWrapper) {
+            dismiss()
+        } content: { wrapper in
+            ErrorView(errorWrapper: wrapper)
+        }
+
     }
     
-    private func saveEdits() {
+    private func saveEdits() throws {
         scrum.title = title
         scrum.lengthInMinutesAsDouble = lengthInMinutesAsDouble
         scrum.attendees = attendees
@@ -113,7 +124,7 @@ struct DetailEditView: View {
             context.insert(scrum)
         }
         
-        try? context.save()
+        try context.save()
     }
 }
 

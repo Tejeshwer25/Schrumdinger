@@ -11,6 +11,7 @@ import AVFoundation
 
 struct MeetingView: View {
     @Environment(\.modelContext) private var context
+    @Binding var errorWrapper: ErrorWrapper?
     @State var scrumTimer = ScrumTimer()
     
     let scrum: DailyScrum
@@ -36,7 +37,11 @@ struct MeetingView: View {
             startScrum()
         }
         .onDisappear(perform: {
-            endScrum()
+            do {
+                try endScrum()
+            } catch {
+                errorWrapper = ErrorWrapper(error: error, guidance: "Meeting time was not recorded. Try again later!")
+            }
         })
         .padding()
         .foregroundStyle(scrum.theme.accentColor)
@@ -52,15 +57,15 @@ struct MeetingView: View {
         scrumTimer.startScrum()
     }
     
-    private func endScrum() {
+    private func endScrum() throws {
         scrumTimer.stopScrum()
         let newHistory = History(attendees: scrum.attendees)
         scrum.history.insert(newHistory, at: 0)
-        try? context.save()
+        try context.save()
     }
 }
 
 #Preview {
     let scrum = DailyScrum.sampleData[0]
-    MeetingView(scrum: scrum)
+    MeetingView(errorWrapper: .constant(nil), scrum: scrum)
 }

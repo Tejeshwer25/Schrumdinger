@@ -16,10 +16,12 @@ class History: Identifiable {
     
     /// Each `DailyScrum` retains a one-to-many list of histories. Each `History` establishes an inverse relationship back to the `DailyScrum` in which it is contained.
     var dailyScrum: DailyScrum?
+    var transcription: String?
     
-    init(id: UUID = UUID(), date: Date = Date(), attendees: [Attendee]) {
+    init(id: UUID = UUID(), date: Date = Date(), attendees: [Attendee], transcription: String? = nil) {
         self.id = id
         self.date = date
         self.attendees = attendees
+        self.transcription = transcription
     }
 }
